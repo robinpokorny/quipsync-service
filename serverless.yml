@@ -1,0 +1,29 @@
+service: quipsync-service
+frameworkVersion: "2"
+
+plugins:
+  - serverless-appsync-plugin
+
+custom:
+  appSync:
+    - ${file(serverless.appsync.yml)}
+
+package:
+  exclude:
+    - package-lock.json
+    - package.json
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+# you can add CloudFormation resource templates here
+#resources:
+#  Resources:
+#    NewResource:
+#      Type: AWS::S3::Bucket
+#      Properties:
+#        BucketName: my-new-bucket
+#  Outputs:
+#     NewOutput:
+#       Description: "Description for the output"
+#       Value: "Some output value"
